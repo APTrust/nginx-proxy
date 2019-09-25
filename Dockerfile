@@ -1,5 +1,7 @@
 FROM nginx:1.14.1
 LABEL maintainer="Jason Wilder mail@jasonwilder.com"
+LABEL maintainer="Christian Dahlhausen christian@aptrust.org"
+LABEL description="Fork of jwilder/nginx-proxy with http2 removed"
 
 # Install wget and install/updates certificates
 RUN apt-get update \
