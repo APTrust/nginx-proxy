@@ -12,7 +12,7 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
  && sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf
 
 # Extend keepalive to avoid EOF form exchange services
-RUN sed -i 's/keepalive_timeout  65/keepalive_timeout 120/' /etc/nginx/nginx.conf
+#RUN sed -i 's/keepalive_timeout  65/keepalive_timeout 120/' /etc/nginx/nginx.conf
 
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
@@ -25,6 +25,7 @@ RUN wget --quiet https://github.com/jwilder/docker-gen/releases/download/$DOCKER
  && rm /docker-gen-alpine-linux-amd64-$DOCKER_GEN_VERSION.tar.gz
 
 COPY network_internal.conf /etc/nginx/
+COPY graylog_nginx.conf /etc/nginx/conf.d/
 
 COPY . /app/
 WORKDIR /app/
