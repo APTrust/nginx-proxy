@@ -99,9 +99,28 @@ proxy_set_header X-Forwarded-Port $proxy_x_forwarded_port;
 
 # Mitigate httpoxy attack (see README for details)
 proxy_set_header Proxy "";
+
+# Temporary increase proxy_timeouts to handle large APTrust ingests
+# Yes it's not the right way to skin the cat.
+proxy_connect_timeout 600;
+proxy_send_timeout 600;
+proxy_read_timeout 600;
+send_timeout 600;
+
 {{ end }}
 
 {{ $enable_ipv6 := eq (or ($.Env.ENABLE_IPV6) "") "true" }}
+server {
+    listen 18080;
+
+    location /nginx_status {
+      stub_status on;
+    }
+
+    location / {
+      return 404;
+    }
+}
 server {
 	server_name _; # This is just an invalid value which will never trigger on a real hostname.
 	listen 80;
