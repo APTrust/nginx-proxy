@@ -3,7 +3,7 @@
 
 REGISTRY = docker.io
 # DOCKER_PWD is set in travis-ci
-DOCKER_USER = cdahlhausen
+# DOCKER_USER is set in travis-ci
 
 update-dependencies:
 	test/requirements/build.sh
