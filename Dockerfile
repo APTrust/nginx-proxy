@@ -1,4 +1,4 @@
-FROM nginx:1.14.1
+FROM nginx:1.17.3
 LABEL maintainer="Jason Wilder mail@jasonwilder.com"
 LABEL maintainer="Christian Dahlhausen christian@aptrust.org"
 LABEL description="Fork of jwilder/nginx-proxy with http2 removed"
