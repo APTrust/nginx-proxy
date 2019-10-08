@@ -9,7 +9,7 @@ update-dependencies:
 	test/requirements/build.sh
 
 test-debian: update-dependencies
-	docker build -t aptrust/nginx-proxy:test .
+	docker build --no-cache -t aptrust/nginx-proxy:test .
 	test/pytest.sh
 
 test-alpine: update-dependencies
