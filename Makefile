@@ -13,7 +13,7 @@ test-debian: update-dependencies
 	test/pytest.sh
 
 test-alpine: update-dependencies
-	docker build -f Dockerfile.alpine -t aptrust/nginx-proxy:test .
+	docker build --no-cache -f Dockerfile.alpine -t aptrust/nginx-proxy:test .
 	test/pytest.sh
 
 test: test-debian test-alpine
