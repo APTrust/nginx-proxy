@@ -24,6 +24,6 @@ release:
 	docker push aptrust/nginx-proxy
 
 release-ci:
-	@echo $(DOCKER_PWD) | docker login -u $(DOCKER_USER) --password-stdin $(REGISTRY)
+	@echo ${DOCKER_PWD} | docker login -u ${DOCKER_USER} --password-stdin $(REGISTRY)
 	docker build --no-cache -f Dockerfile.alpine -t aptrust/nginx-proxy .
 	docker push aptrust/nginx-proxy
