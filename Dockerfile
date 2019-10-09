@@ -16,6 +16,15 @@ RUN apt-get update \
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
  && sed -i 's/worker_processes  1/worker_processes  auto/' /etc/nginx/nginx.conf
 
+# Extend timeout because Pharos is slow
+RUN { \
+     echo 'proxy_connect_timeout 600;'; \
+     echo 'proxy_send_timeout 600;'; \
+     echo 'proxy_read_timeout 600;'; \
+     echo 'send_timeout 600;'; \
+   } > /etc/nginx/conf.d/extended_timeout.conf
+
+
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
