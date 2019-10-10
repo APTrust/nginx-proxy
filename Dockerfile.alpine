@@ -22,17 +22,6 @@ RUN { \
       echo 'send_timeout 600;'; \
   } > /etc/nginx/conf.d/extended_timeout.conf
 
-RUN { \
-	  echo 'server {' \
-	  echo 'listen 18080;' \
-      echo 'location /nginx_status {' \
-	  echo 'stub_status on;'\
-	  echo '}'\
-	  echo 'location / {' \
-      echo '    return 404;' \
-	  echo '}' \
-  } > /etc/nginx/vhost.d/nginx_status
-
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
@@ -45,6 +34,7 @@ RUN wget --quiet https://github.com/jwilder/docker-gen/releases/download/$DOCKER
 
 COPY network_internal.conf /etc/nginx/
 COPY graylog_nginx.conf /etc/nginx/conf.d/
+COPY nginx_status.conf /etc/nginx/vhost.d/
 
 COPY . /app/
 WORKDIR /app/
