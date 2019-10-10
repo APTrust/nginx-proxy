@@ -22,6 +22,17 @@ RUN { \
       echo 'send_timeout 600;'; \
   } > /etc/nginx/conf.d/extended_timeout.conf
 
+RUN { \
+	  echo 'server {' \
+	  echo 'listen 18080;' \
+      echo 'location /nginx_status {' \
+	  echo 'stub_status on;'\
+	  echo '}'\
+	  echo 'location / {' \
+      echo '    return 404;' \
+	  echo '}' \
+  } > /etc/nginx/vhost.d/nginx_status
+
 # Install Forego
 ADD https://github.com/jwilder/forego/releases/download/v0.16.1/forego /usr/local/bin/forego
 RUN chmod u+x /usr/local/bin/forego
