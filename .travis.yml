@@ -1,23 +1,21 @@
 dist: trusty
 sudo: required
 services:
-  - docker
+- docker
 install: true
 addons:
   apt:
     packages:
-      - docker-ce
-      - git
+    - docker-ce
+    - git
 before_install:
-  # prepare docker test requirements
-  - make update-dependencies
-
+- make update-dependencies
 script:
-  - make test-alpine
+- make test-alpine
 deploy:
-  - provider: script
-    script: make -w release-ci
-    skip_cleanup: true
+- provider: script
+  script: make -w release-ci
+  skip_cleanup: true
 notifications:
   slack:
-    secure: H5vU3wRKiO5VCBNThkEfT5uhpZVa710PnaRzfSM1wfX95X5JvV7NmH8AwbGtpe90O5gpub2kEji7WIFtshRwVCFwcjvA11pWUH7Q2K5fs6mcSoIFTXXptNW2jnbC8a11yiMPu41BFVOphQQk/mDMIhP95RN0+Zr7x92zzn/LwRETW1OseJN05KpOE0CLTaOv8apJecpVzcw55sNuCD2Ztrlu9tut45rKBKCEGUta4YImWey5RgxKYgP+7I7K7ImueRCZuKWMbYtmVaYSF7/hf23xwD5jESVpq/xlf89B3JOpu3NQL6ZNQHfMvGZwjHkgTAnO/D/zWD+kUVTs1ulgbVbeJqxtT/mAqiWVCagX7QHOSirwJ7Se4jjAU4LpNAvtXGFuRKZNiNDtDm1beQGbwmrMoTN22FykQwkDm1bWwUQCuFEsSNi1yHS7pN+RNAyqIYOqdn9KjZT/TMxsWRfp/+z3rReh7GBZTsDzGaNG46gUUJDcYLcgO7jpAiu7wcM2md9Q0qmmZ8LP3cZzHyde3k4MYNL+ETZXrAzJOxN6liUW+TgdfyD5mK632OVImCRyxLv6NKvTCL/YhpRRymI0gYLhENy3BgM/yZPV62qfVxyAxUrtFF9hwcXd3Nzj56hFmBCuNXRnF2jnMETv9tzQZaGARcEbGMaHw/hLSXYBtpE=
+    secure: MYygcOGc2g5Um8TGDN32jMbLt4Y9bZ71Mw+WFhTzkgqnxWlk/4f0F7aa1Ln2JYJYwrSM6qZkLUklf8J8n+aLdmUJWjeATzXVGlAUiZAxNuNeunOxU2bPmysC9LF0x7+x6cMGGj0TeMrOjVePeZKEddczk2yLnneaOIJH6D/lJkHu2d9ZR3iuE8I+2jpYqEvUxSET1TBV7VulZsML2pKbLetNoa3VgjlKotsnjIII1tfeFxq6a2QX4+ws+fS5mKUdWecvF33ZT282rJvc7JGhySxGHj+dsi4EE5Kr8T0Pp9q7EL2VUrDR6mWKZhmsegP8gaqz4dYsPbrDhjCWbwusT+Z66u21cGZnVfW73zZsu+SNiRHdT8Ar0akyjUZOMN82J1R/y9aNzg/YBwasRMNKl1xzy/zr+aa0kQb/aqo5IygkyIXIUKj44MoFEoeKw1GOemfamMWPEdgCTpHJdBrvFSKzkZ14halsLuZEINVvg0SxRB9py/nTXrlotggK3thGw6yitNsgTODCzVPaoiK3a/j/EIef5xtQhDt12pun1Xtfc+9adwGpvAzrTv1aqzKoVQlZlMrgWC0j7+geq6ONhH8l0WKe9RubZjaxQXmKbDFcmnoZcQbdNAV1IOA4MUKbP2V0G4HYK8t7jNx9CasS0I1v7hiz3n9dOnhMlCjCifA=
