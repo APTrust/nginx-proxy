@@ -18,6 +18,9 @@ test-alpine: update-dependencies
 
 test: test-debian test-alpine
 
+build:
+	docker build --no-cache -f Dockerfile.alpine -t aptrust/nginx-proxy .
+
 release:
 	docker login
 	docker build --no-cache -f Dockerfile.alpine -t aptrust/nginx-proxy .
