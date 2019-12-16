@@ -18,10 +18,10 @@ RUN echo "daemon off;" >> /etc/nginx/nginx.conf \
 
 # Extend timeout because Pharos is slow
 RUN { \
-     echo 'proxy_connect_timeout 600;'; \
-     echo 'proxy_send_timeout 600;'; \
-     echo 'proxy_read_timeout 600;'; \
-     echo 'send_timeout 600;'; \
+     echo 'proxy_connect_timeout 1200;'; \
+     echo 'proxy_send_timeout 1200;'; \
+     echo 'proxy_read_timeout 1200;'; \
+     echo 'send_timeout 1200;'; \
    } > /etc/nginx/conf.d/extended_timeout.conf
 
 
